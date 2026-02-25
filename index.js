@@ -51,7 +51,7 @@ Chọn chức năng (1-7):`;
     }
 
     case "5": {
-      let keyword = prompt("Nhập từ khóa cần tìm:").toLowerCase();
+      let keyword = prompt("Nhập từ khóa cần tìm:").toLowerCas();
       let results = "";
 
       names.forEach((name, index) => {
@@ -59,28 +59,32 @@ Chọn chức năng (1-7):`;
           results += `${name} - Giá: ${prices[index]} - Kho: ${stocks[index]}\n`;
         }
       });
+      if (results === "") {
+        alert("Không tìm thấy sản phẩm!");
+      } else {
+        alert(results);
+      }
 
-      alert(results || "Không tìm thấy sản phẩm nào!");
       break;
     }
 
     case "6": {
       let reports = names.map((name, index) => {
         let status = stocks[index] > 0 ? "Còn hàng" : "Hết hàng";
-        return `${name}: ${status}`;
+        return `${names[index]} - ${status} - (${stocks[index]})`;
       });
-      alert("Báo cáo kho hàng:\n" + reports.join("\n"));
+      alert(`KẾT QUẢ: 
+${reports.join("\n")}`);
       break;
     }
     case "7": {
       if (choice === "7" || choice === null) {
         alert("Cảm ơn bạn đã sử dụng hệ thống!");
-        break; 
+        break;
       }
     }
 
     default:
       alert("Lựa chọn không hợp lệ, vui lòng nhập từ 1 đến 7!");
-      
   }
 }
